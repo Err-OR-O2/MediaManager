@@ -16,7 +16,11 @@ namespace MediaManager
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new Main());
+
+            //frmStart frm = new frmStart();
+            //frm.ShowDialog();
+
+            Application.Run(new frmMain());
         }
     }
 }
