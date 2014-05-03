@@ -17,6 +17,72 @@ namespace MediaManager
     public partial class frmMain : MetroForm
     {
 
+        #region 主启动对象及执行
+        /// <summary>
+        /// 主选项面板集合.
+        /// </summary>
+        private Dictionary<LabelX, PanelEx> dicSelectOptions = new Dictionary<LabelX, PanelEx>();
+        /// <summary>
+        /// 启动事务以及对象初始化.
+        /// </summary>
+        private void LoadTransaction()
+        {
+            //是否已有主选项.
+            bool isHadMain = false;
+            //挂载事件,关联菜单面板关系.
+            foreach (LabelX lbl in pnlSelectOptions.Controls)
+            {
+                //鼠标进入事件.
+                lbl.MouseEnter += new EventHandler(lblOption_MouseEnter);
+                //鼠标离开事件.
+                lbl.MouseLeave += new EventHandler(lblOption_MouseLeave);
+                //鼠标单击事件.
+                lbl.Click += new EventHandler(lblOption_Click);
+
+                dicSelectOptions.Add(lbl, null);
+
+                if (lbl.Tag != null)
+                {
+                    if (isHadMain)
+                    {
+                        throw new Exception("不允许存在多个主选项");
+                    }
+                    else
+                    {
+                        lbl.Tag = optionState.MAINCHECKED;
+
+                        //设置主选项默认选中状态.
+                        lbl.BackColor = colChecked;
+
+                        isHadMain = true;
+                    }
+                }
+                else
+                {
+                    lbl.Tag = optionState.UNCHECK;
+                }
+
+                //关联关系.
+                foreach (System.Windows.Forms.Control ctrlTEMP in pnlCenterContent.Controls)
+                {
+                    if (ctrlTEMP.GetType() == typeof(PanelEx) && ((PanelEx)ctrlTEMP).Tag != null)
+                    {
+                        PanelEx pnl = ((PanelEx)ctrlTEMP);
+
+                        //设置所有面板默认隐藏.
+                        pnl.Visible = false;
+
+                        if (pnl.Tag.ToString() == lbl.Name)
+                        {
+                            pnl.Tag = lbl;
+                            dicSelectOptions[lbl] = pnl;
+                        }
+                    }
+                }
+            }
+        }
+        #endregion
+
         #region 窗体移动
         [DllImport("user32.dll")]
         public static extern bool ReleaseCapture();
@@ -337,6 +403,278 @@ namespace MediaManager
         }
         #endregion
 
+        #region 主选项及面板事件
+        /// <summary>
+        /// 面板宽度.
+        /// </summary>
+        private int intWidth;
+        /// <summary>
+        /// 面板高度.
+        /// </summary>
+        private int intHeight;
+        /// <summary>
+        /// 面板缓速宽度.
+        /// </summary>
+        private int intWidthSub;
+        /// <summary>
+        /// 选项进入背景色.
+        /// </summary>
+        private Color colMoveIn = Color.LightGray;
+        /// <summary>
+        /// 选项选中背景色.
+        /// </summary>
+        private Color colChecked = Color.DimGray;
+        /// <summary>
+        /// 选项未选中背景色.
+        /// </summary>
+        private Color colUnCheck = Color.Transparent;
+        /// <summary>
+        /// 前一面板对象.
+        /// </summary>
+        private PanelEx pnlPrevious = null;
+        /// <summary>
+        /// 当前面板对象.
+        /// </summary>
+        private PanelEx pnlCurrent = null;
+        /// <summary>
+        /// 面板动画时间控件.
+        /// </summary>
+        private System.Windows.Forms.Timer timeOptionAnimate;
+        /// <summary>
+        /// 主选项状态.
+        /// </summary>
+        private enum optionState
+        {
+            /// <summary>
+            /// 选中状态.
+            /// </summary>
+            CHECKED,
+            /// <summary>
+            /// 未选中状态
+            /// </summary>
+            UNCHECK,
+            /// <summary>
+            /// 主面板选中状态.
+            /// </summary>
+            MAINCHECKED,
+            /// <summary>
+            /// 主面板未选中状态.
+            /// </summary>
+            MAINUNCHECK
+        }
+        /// <summary>
+        /// 主选项鼠标进入事件.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblOption_MouseEnter(object sender, EventArgs e)
+        {
+            if ((optionState)((LabelX)sender).Tag != optionState.CHECKED
+                &&
+                (optionState)((LabelX)sender).Tag != optionState.MAINCHECKED)
+            {
+                ((LabelX)sender).BackColor = colMoveIn;
+            }
+        }
+        /// <summary>
+        /// 主选项鼠标离开事件.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblOption_MouseLeave(object sender, EventArgs e)
+        {
+            if ((optionState)((LabelX)sender).Tag != optionState.CHECKED
+                &&
+                (optionState)((LabelX)sender).Tag != optionState.MAINCHECKED)
+            {
+                ((LabelX)sender).BackColor = colUnCheck;
+            }
+        }
+        /// <summary>
+        /// 主选项鼠标单击事件.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void lblOption_Click(object sender, EventArgs e)
+        {
+            //判断是否已选中.
+            if ((optionState)((LabelX)sender).Tag == optionState.CHECKED
+                ||
+                (optionState)((LabelX)sender).Tag == optionState.MAINCHECKED)
+                return;
+
+            //设置所有选项为未选中.
+            foreach (LabelX lbl in ((LabelX)sender).Parent.Controls)
+            {
+                if ((optionState)lbl.Tag == optionState.MAINCHECKED)
+                    lbl.Tag = optionState.MAINUNCHECK;
+                else if ((optionState)lbl.Tag == optionState.CHECKED)
+                {
+                    pnlPrevious = dicSelectOptions[lbl];
+                    lbl.Tag = optionState.UNCHECK;
+                }
+                lbl.BackColor = colUnCheck;
+            }
+
+            //选中当前选项.
+            if ((optionState)((LabelX)sender).Tag == optionState.MAINUNCHECK)
+                ((LabelX)sender).Tag = optionState.MAINCHECKED;
+            else
+                ((LabelX)sender).Tag = optionState.CHECKED;
+            ((LabelX)sender).BackColor = colChecked;
+
+            #region 面板动画初始化
+            //判断是否存在面板对象.
+            if ((optionState)((LabelX)sender).Tag != optionState.MAINCHECKED && dicSelectOptions[((LabelX)sender)] == null)
+                return;
+
+            //判断前一动画是否执行完毕.
+            if (timeOptionAnimate != null && timeOptionAnimate.Enabled)
+            {
+                timeOptionAnimate.Stop();
+
+                if (pnlPrevious != null)
+                    pnlPrevious.Dock = System.Windows.Forms.DockStyle.Fill;
+            }
+
+            //初始化动画时间控件.
+            timeOptionAnimate = new System.Windows.Forms.Timer();
+            timeOptionAnimate.Enabled = false;
+            timeOptionAnimate.Interval = 1;
+
+            //判断动画效果.
+            if ((optionState)((LabelX)sender).Tag == optionState.MAINCHECKED)
+            {
+                //判断是否存在面板.
+                if (pnlPrevious == null)
+                    return;
+
+                //挂载动画事件.
+                timeOptionAnimate.Tick += new EventHandler(timeOptionAnimateClose_Tick);
+
+                //设置除前一面板外所有面板为隐藏.
+                foreach (System.Windows.Forms.Control ctrlTEMP in pnlCenterContent.Controls)
+                {
+                    if (ctrlTEMP.GetType() == typeof(PanelEx) && ((PanelEx)ctrlTEMP).Tag != null)
+                    {
+                        PanelEx pnl = ((PanelEx)ctrlTEMP);
+
+                        if (pnlPrevious != pnl)
+                            pnl.Visible = false;
+                    }
+                }
+
+                //为动画进行属性初始化.
+                intWidth = pnlPrevious.Width;
+                intHeight = pnlPrevious.Height;
+                intWidthSub = intWidth / 10;
+
+                pnlPrevious.Dock = System.Windows.Forms.DockStyle.None;
+                pnlPrevious.Location = new Point(0, 0);
+                pnlPrevious.Width = intWidth;
+                pnlPrevious.Height = intHeight;
+            }
+            else
+            {
+                //挂载动画事件.
+                timeOptionAnimate.Tick += new EventHandler(timeOptionAnimateOpen_Tick);
+
+                pnlCurrent = dicSelectOptions[((LabelX)sender)];
+
+                //为动画进行属性初始化.
+                pnlCurrent.Visible = true;
+                pnlCurrent.BringToFront();
+
+                pnlCurrent.Dock = System.Windows.Forms.DockStyle.Fill;
+
+                intWidth = pnlCurrent.Width;
+                intHeight = pnlCurrent.Height;
+                intWidthSub = intWidth / 10;
+
+                pnlCurrent.Dock = System.Windows.Forms.DockStyle.None;
+                pnlCurrent.Location = new Point(-intWidth, 0);
+                pnlCurrent.Width = intWidth;
+                pnlCurrent.Height = intHeight;
+            }
+            #endregion
+            timeOptionAnimate.Start();
+        }
+        /// <summary>
+        /// 打开面板动画.
+        /// </summary>
+        private void AnimateControlFuncOpen()
+        {
+            //如果对象为空终止.
+            if (pnlCurrent == null)
+            {
+                timeOptionAnimate.Stop();
+                return;
+            }
+            //通过对象高宽计算动画速度.
+            if (-pnlCurrent.Location.X >= intWidthSub)
+            {
+                pnlCurrent.Location = new Point(pnlCurrent.Location.X + intWidth / 30, 0);
+            }
+            else
+            {
+                pnlCurrent.Location = new Point(pnlCurrent.Location.X + intWidth / 100, 0);
+            }
+
+            if (-pnlCurrent.Location.X < 0)
+            {
+                pnlCurrent.Location = new Point(0, 0);
+                timeOptionAnimate.Stop();
+                pnlCurrent.Dock = System.Windows.Forms.DockStyle.Fill;
+            }
+        }
+        /// <summary>
+        /// 关闭面板动画.
+        /// </summary>
+        private void AnimateControlFuncClose()
+        {
+            //如果对象为空终止.
+            if (pnlPrevious == null)
+            {
+                timeOptionAnimate.Stop();
+                return;
+            }
+            //通过对象高宽计算动画速度.
+            if (intWidth + pnlPrevious.Location.X >= intWidthSub)
+            {
+                pnlPrevious.Location = new Point(pnlPrevious.Location.X - intWidth / 30, 0);
+            }
+            else
+            {
+                pnlPrevious.Location = new Point(pnlPrevious.Location.X - intWidth / 100, 0);
+            }
+
+            if (pnlPrevious.Location.X < -intWidth)
+            {
+                pnlPrevious.Location = new Point(-intWidth, 0);
+                timeOptionAnimate.Stop();
+                pnlPrevious.Visible = false;
+            }
+        }
+        /// <summary>
+        /// 面板动画打开时间事件.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeOptionAnimateOpen_Tick(object sender, EventArgs e)
+        {
+            AnimateControlFuncOpen();
+        }
+        /// <summary>
+        /// 面板动画关闭时间事件.
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void timeOptionAnimateClose_Tick(object sender, EventArgs e)
+        {
+            AnimateControlFuncClose();
+        }
+        #endregion
+
         #region 窗体构造函数
         public frmMain()
         {
@@ -354,6 +692,7 @@ namespace MediaManager
         /// <param name="e"></param>
         private void Main_Load(object sender, EventArgs e)
         {
+            LoadTransaction();
             sbStyle.Value = false;
         }
         /// <summary>
@@ -408,7 +747,7 @@ namespace MediaManager
         {
             if (e.Cancel == true)
                 return;
-            
+
             if (MessageBoxEx.Show("是否退出", "提示", System.Windows.Forms.MessageBoxButtons.YesNo) != System.Windows.Forms.DialogResult.Yes)
             {
                 e.Cancel = true;
@@ -446,76 +785,5 @@ namespace MediaManager
         }
         #endregion
 
-        private void lblOption_MouseEnter(object sender, EventArgs e)
-        {
-            if (((LabelX)sender).Tag == null)
-            {
-                ((LabelX)sender).BackColor = Color.LightGray;
-            }
-        }
-
-        private void lblOption_MouseLeave(object sender, EventArgs e)
-        {
-            if (((LabelX)sender).Tag == null)
-            {
-                ((LabelX)sender).BackColor = Color.Transparent;
-            }
-        }
-
-        private void lblOption_Click(object sender, EventArgs e)
-        {
-            foreach (LabelX lbl in ((LabelX)sender).Parent.Controls)
-            {
-                lbl.Tag = null;
-                lbl.BackColor = Color.Transparent;
-            }
-            if (((LabelX)sender).Tag == null)
-            {
-                ((LabelX)sender).Tag = "check";
-                ((LabelX)sender).BackColor = Color.Gray;
-            }
-
-            pnlCenterContent.Visible = true;
-
-            intWidth = pnlCenterContent.Width;
-            intHeight = pnlCenterContent.Height;
-            intWidthSub = intWidth / 10;
-
-            pnlCenterContent.Dock = System.Windows.Forms.DockStyle.None;
-            pnlCenterContent.Location = new Point(-intWidth, 0);
-            pnlCenterContent.Width = intWidth;
-            pnlCenterContent.Height = intHeight;
-
-            Timer.Start();
-        }
-
-        int intWidthSub;
-        int intWidth;
-        int intHeight;
-
-        private delegate void AnimateControl();
-        private void AnimateControlFunc()
-        {
-            if (-pnlCenterContent.Location.X >= intWidthSub)
-            {
-                pnlCenterContent.Location = new Point(pnlCenterContent.Location.X + intWidth / 30, 0);
-            }
-            else
-            {
-                pnlCenterContent.Location = new Point(pnlCenterContent.Location.X + intWidth / 100, 0);
-            }
-
-            if (-pnlCenterContent.Location.X < 0)
-            {
-                pnlCenterContent.Location = new Point(0, 0);
-                Timer.Stop();
-                pnlCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            }
-        }
-
-        private void Timer_Tick(object sender, EventArgs e)
-        {
-            AnimateControlFunc();
-        }
     }
 }

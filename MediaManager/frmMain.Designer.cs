@@ -33,7 +33,8 @@
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.sbStyle = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.pnlSelectMenu = new DevComponents.DotNetBar.PanelEx();
-            this.pnl = new DevComponents.DotNetBar.PanelEx();
+            this.pnlSelectOptions = new DevComponents.DotNetBar.PanelEx();
+            this.lblOptionMain = new DevComponents.DotNetBar.LabelX();
             this.lblOptionThree = new DevComponents.DotNetBar.LabelX();
             this.lblOptionTwo = new DevComponents.DotNetBar.LabelX();
             this.lblOptionOne = new DevComponents.DotNetBar.LabelX();
@@ -42,18 +43,23 @@
             this.pnlLeftContent = new DevComponents.DotNetBar.PanelEx();
             this.pnlRightContent = new DevComponents.DotNetBar.PanelEx();
             this.pnlCenterContent = new DevComponents.DotNetBar.PanelEx();
+            this.pnlOptionThree = new DevComponents.DotNetBar.PanelEx();
+            this.pnlOptionTwo = new DevComponents.DotNetBar.PanelEx();
+            this.pnlOptionOne = new DevComponents.DotNetBar.PanelEx();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
             this.pnlTitle = new DevComponents.DotNetBar.PanelEx();
             this.btnMin = new DevComponents.DotNetBar.ButtonX();
             this.btnMax = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.pnlMain = new DevComponents.DotNetBar.PanelEx();
-            this.Timer = new System.Windows.Forms.Timer(this.components);
+            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
+            this.labelX1 = new DevComponents.DotNetBar.LabelX();
             this.pnlSelectMenu.SuspendLayout();
-            this.pnl.SuspendLayout();
+            this.pnlSelectOptions.SuspendLayout();
             this.pnlLeftContent.SuspendLayout();
             this.pnlRightContent.SuspendLayout();
             this.pnlCenterContent.SuspendLayout();
+            this.pnlOptionOne.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.pnlMain.SuspendLayout();
             this.SuspendLayout();
@@ -86,7 +92,7 @@
             // 
             this.pnlSelectMenu.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlSelectMenu.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlSelectMenu.Controls.Add(this.pnl);
+            this.pnlSelectMenu.Controls.Add(this.pnlSelectOptions);
             this.pnlSelectMenu.Controls.Add(this.pnlSelectMenuBottom);
             this.pnlSelectMenu.Controls.Add(this.pnlSelectMenuTop);
             this.pnlSelectMenu.Dock = System.Windows.Forms.DockStyle.Left;
@@ -103,22 +109,42 @@
             this.pnlSelectMenu.Style.GradientAngle = 90;
             this.pnlSelectMenu.TabIndex = 9;
             // 
-            // pnl
+            // pnlSelectOptions
             // 
-            this.pnl.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnl.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnl.Controls.Add(this.lblOptionThree);
-            this.pnl.Controls.Add(this.lblOptionTwo);
-            this.pnl.Controls.Add(this.lblOptionOne);
-            this.pnl.Location = new System.Drawing.Point(-1, 93);
-            this.pnl.Name = "pnl";
-            this.pnl.Size = new System.Drawing.Size(202, 196);
-            this.pnl.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnl.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.pnl.Style.BorderWidth = 0;
-            this.pnl.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.pnl.Style.GradientAngle = 90;
-            this.pnl.TabIndex = 2;
+            this.pnlSelectOptions.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlSelectOptions.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlSelectOptions.Controls.Add(this.labelX1);
+            this.pnlSelectOptions.Controls.Add(this.lblOptionMain);
+            this.pnlSelectOptions.Controls.Add(this.lblOptionThree);
+            this.pnlSelectOptions.Controls.Add(this.lblOptionTwo);
+            this.pnlSelectOptions.Controls.Add(this.lblOptionOne);
+            this.pnlSelectOptions.Location = new System.Drawing.Point(-1, 93);
+            this.pnlSelectOptions.Name = "pnlSelectOptions";
+            this.pnlSelectOptions.Size = new System.Drawing.Size(202, 373);
+            this.pnlSelectOptions.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlSelectOptions.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnlSelectOptions.Style.BorderWidth = 0;
+            this.pnlSelectOptions.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnlSelectOptions.Style.GradientAngle = 90;
+            this.pnlSelectOptions.TabIndex = 2;
+            // 
+            // lblOptionMain
+            // 
+            this.lblOptionMain.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.lblOptionMain.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.lblOptionMain.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.lblOptionMain.ForeColor = System.Drawing.Color.Black;
+            this.lblOptionMain.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionMain.Image")));
+            this.lblOptionMain.ImageTextSpacing = 15;
+            this.lblOptionMain.Location = new System.Drawing.Point(-1, 27);
+            this.lblOptionMain.Name = "lblOptionMain";
+            this.lblOptionMain.Size = new System.Drawing.Size(205, 40);
+            this.lblOptionMain.TabIndex = 3;
+            this.lblOptionMain.Tag = "main";
+            this.lblOptionMain.Text = "欢迎使用媒体管理";
             // 
             // lblOptionThree
             // 
@@ -131,14 +157,11 @@
             this.lblOptionThree.ForeColor = System.Drawing.Color.Black;
             this.lblOptionThree.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionThree.Image")));
             this.lblOptionThree.ImageTextSpacing = 15;
-            this.lblOptionThree.Location = new System.Drawing.Point(-1, 112);
+            this.lblOptionThree.Location = new System.Drawing.Point(-1, 147);
             this.lblOptionThree.Name = "lblOptionThree";
             this.lblOptionThree.Size = new System.Drawing.Size(205, 40);
             this.lblOptionThree.TabIndex = 2;
-            this.lblOptionThree.Text = "欢迎使用媒体管理";
-            this.lblOptionThree.Click += new System.EventHandler(this.lblOption_Click);
-            this.lblOptionThree.MouseEnter += new System.EventHandler(this.lblOption_MouseEnter);
-            this.lblOptionThree.MouseLeave += new System.EventHandler(this.lblOption_MouseLeave);
+            this.lblOptionThree.Text = "面板3";
             // 
             // lblOptionTwo
             // 
@@ -151,14 +174,11 @@
             this.lblOptionTwo.ForeColor = System.Drawing.Color.Black;
             this.lblOptionTwo.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionTwo.Image")));
             this.lblOptionTwo.ImageTextSpacing = 15;
-            this.lblOptionTwo.Location = new System.Drawing.Point(-1, 72);
+            this.lblOptionTwo.Location = new System.Drawing.Point(-1, 107);
             this.lblOptionTwo.Name = "lblOptionTwo";
             this.lblOptionTwo.Size = new System.Drawing.Size(205, 40);
             this.lblOptionTwo.TabIndex = 1;
-            this.lblOptionTwo.Text = "欢迎使用媒体管理";
-            this.lblOptionTwo.Click += new System.EventHandler(this.lblOption_Click);
-            this.lblOptionTwo.MouseEnter += new System.EventHandler(this.lblOption_MouseEnter);
-            this.lblOptionTwo.MouseLeave += new System.EventHandler(this.lblOption_MouseLeave);
+            this.lblOptionTwo.Text = "面板2";
             // 
             // lblOptionOne
             // 
@@ -171,14 +191,11 @@
             this.lblOptionOne.ForeColor = System.Drawing.Color.Black;
             this.lblOptionOne.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionOne.Image")));
             this.lblOptionOne.ImageTextSpacing = 15;
-            this.lblOptionOne.Location = new System.Drawing.Point(-1, 32);
+            this.lblOptionOne.Location = new System.Drawing.Point(-1, 67);
             this.lblOptionOne.Name = "lblOptionOne";
             this.lblOptionOne.Size = new System.Drawing.Size(205, 40);
             this.lblOptionOne.TabIndex = 0;
-            this.lblOptionOne.Text = "欢迎使用媒体管理";
-            this.lblOptionOne.Click += new System.EventHandler(this.lblOption_Click);
-            this.lblOptionOne.MouseEnter += new System.EventHandler(this.lblOption_MouseEnter);
-            this.lblOptionOne.MouseLeave += new System.EventHandler(this.lblOption_MouseLeave);
+            this.lblOptionOne.Text = "面板1";
             // 
             // pnlSelectMenuBottom
             // 
@@ -255,13 +272,15 @@
             this.pnlRightContent.Style.GradientAngle = 90;
             this.pnlRightContent.TabIndex = 11;
             this.pnlRightContent.Text = "panelEx3";
-            this.pnlRightContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Frm_MouseDown);
             // 
             // pnlCenterContent
             // 
             this.pnlCenterContent.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlCenterContent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlCenterContent.Controls.Add(this.webBrowser);
+            this.pnlCenterContent.Controls.Add(this.buttonX1);
+            this.pnlCenterContent.Controls.Add(this.pnlOptionThree);
+            this.pnlCenterContent.Controls.Add(this.pnlOptionTwo);
+            this.pnlCenterContent.Controls.Add(this.pnlOptionOne);
             this.pnlCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCenterContent.Location = new System.Drawing.Point(0, 0);
             this.pnlCenterContent.Name = "pnlCenterContent";
@@ -274,7 +293,58 @@
             this.pnlCenterContent.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlCenterContent.Style.GradientAngle = 90;
             this.pnlCenterContent.TabIndex = 0;
-            this.pnlCenterContent.Text = "panelEx4";
+            this.pnlCenterContent.Text = "pnlCenterContent";
+            // 
+            // pnlOptionThree
+            // 
+            this.pnlOptionThree.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlOptionThree.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlOptionThree.Location = new System.Drawing.Point(53, 257);
+            this.pnlOptionThree.Name = "pnlOptionThree";
+            this.pnlOptionThree.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionThree.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlOptionThree.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.pnlOptionThree.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnlOptionThree.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnlOptionThree.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnlOptionThree.Style.GradientAngle = 90;
+            this.pnlOptionThree.TabIndex = 3;
+            this.pnlOptionThree.Tag = "lblOptionThree";
+            this.pnlOptionThree.Text = "pnlOptionThree";
+            // 
+            // pnlOptionTwo
+            // 
+            this.pnlOptionTwo.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlOptionTwo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlOptionTwo.Location = new System.Drawing.Point(53, 151);
+            this.pnlOptionTwo.Name = "pnlOptionTwo";
+            this.pnlOptionTwo.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionTwo.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlOptionTwo.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.pnlOptionTwo.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnlOptionTwo.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnlOptionTwo.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnlOptionTwo.Style.GradientAngle = 90;
+            this.pnlOptionTwo.TabIndex = 2;
+            this.pnlOptionTwo.Tag = "lblOptionTwo";
+            this.pnlOptionTwo.Text = "pnlOptionTwo";
+            // 
+            // pnlOptionOne
+            // 
+            this.pnlOptionOne.CanvasColor = System.Drawing.SystemColors.Control;
+            this.pnlOptionOne.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlOptionOne.Controls.Add(this.webBrowser);
+            this.pnlOptionOne.Location = new System.Drawing.Point(53, 45);
+            this.pnlOptionOne.Name = "pnlOptionOne";
+            this.pnlOptionOne.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionOne.Style.Alignment = System.Drawing.StringAlignment.Center;
+            this.pnlOptionOne.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
+            this.pnlOptionOne.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
+            this.pnlOptionOne.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
+            this.pnlOptionOne.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
+            this.pnlOptionOne.Style.GradientAngle = 90;
+            this.pnlOptionOne.TabIndex = 1;
+            this.pnlOptionOne.Tag = "lblOptionOne";
             // 
             // webBrowser
             // 
@@ -282,7 +352,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(780, 496);
+            this.webBrowser.Size = new System.Drawing.Size(200, 100);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("http://chdbits.org/", System.UriKind.Absolute);
             // 
@@ -382,10 +452,33 @@
             this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
             this.pnlMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
             // 
-            // Timer
+            // buttonX1
             // 
-            this.Timer.Interval = 1;
-            this.Timer.Tick += new System.EventHandler(this.Timer_Tick);
+            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.buttonX1.Location = new System.Drawing.Point(460, 333);
+            this.buttonX1.Name = "buttonX1";
+            this.buttonX1.Size = new System.Drawing.Size(75, 23);
+            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.buttonX1.TabIndex = 4;
+            this.buttonX1.Text = "buttonX1";
+            // 
+            // labelX1
+            // 
+            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            // 
+            // 
+            // 
+            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.labelX1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            this.labelX1.ForeColor = System.Drawing.Color.Black;
+            this.labelX1.Image = ((System.Drawing.Image)(resources.GetObject("labelX1.Image")));
+            this.labelX1.ImageTextSpacing = 15;
+            this.labelX1.Location = new System.Drawing.Point(-1, 224);
+            this.labelX1.Name = "labelX1";
+            this.labelX1.Size = new System.Drawing.Size(205, 40);
+            this.labelX1.TabIndex = 4;
+            this.labelX1.Text = "面板4";
             // 
             // frmMain
             // 
@@ -397,13 +490,15 @@
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.Name = "frmMain";
             this.Text = "Form1";
+            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlSelectMenu.ResumeLayout(false);
-            this.pnl.ResumeLayout(false);
+            this.pnlSelectOptions.ResumeLayout(false);
             this.pnlLeftContent.ResumeLayout(false);
             this.pnlRightContent.ResumeLayout(false);
             this.pnlCenterContent.ResumeLayout(false);
+            this.pnlOptionOne.ResumeLayout(false);
             this.pnlTitle.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
             this.ResumeLayout(false);
@@ -426,11 +521,16 @@
         private DevComponents.DotNetBar.PanelEx pnlMain;
         private DevComponents.DotNetBar.PanelEx pnlSelectMenuTop;
         private DevComponents.DotNetBar.PanelEx pnlSelectMenuBottom;
-        private DevComponents.DotNetBar.PanelEx pnl;
+        private DevComponents.DotNetBar.PanelEx pnlSelectOptions;
         private DevComponents.DotNetBar.LabelX lblOptionOne;
         private DevComponents.DotNetBar.LabelX lblOptionThree;
         private DevComponents.DotNetBar.LabelX lblOptionTwo;
-        private System.Windows.Forms.Timer Timer;
+        private DevComponents.DotNetBar.PanelEx pnlOptionThree;
+        private DevComponents.DotNetBar.PanelEx pnlOptionTwo;
+        private DevComponents.DotNetBar.PanelEx pnlOptionOne;
+        private DevComponents.DotNetBar.LabelX lblOptionMain;
+        private DevComponents.DotNetBar.ButtonX buttonX1;
+        private DevComponents.DotNetBar.LabelX labelX1;
     }
 }
 
