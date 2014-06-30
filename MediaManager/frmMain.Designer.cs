@@ -38,7 +38,6 @@
             this.lblOptionThree = new DevComponents.DotNetBar.LabelX();
             this.lblOptionTwo = new DevComponents.DotNetBar.LabelX();
             this.lblOptionOne = new DevComponents.DotNetBar.LabelX();
-            this.pnlSelectMenuBottom = new DevComponents.DotNetBar.PanelEx();
             this.pnlSelectMenuTop = new DevComponents.DotNetBar.PanelEx();
             this.pnlLeftContent = new DevComponents.DotNetBar.PanelEx();
             this.pnlRightContent = new DevComponents.DotNetBar.PanelEx();
@@ -52,8 +51,15 @@
             this.btnMax = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.pnlMain = new DevComponents.DotNetBar.PanelEx();
-            this.buttonX1 = new DevComponents.DotNetBar.ButtonX();
-            this.labelX1 = new DevComponents.DotNetBar.LabelX();
+            this.dotNetBarManager = new DevComponents.DotNetBar.DotNetBarManager(this.components);
+            this.dockSite1 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite2 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite3 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite4 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite5 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite6 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite7 = new DevComponents.DotNetBar.DockSite();
+            this.dockSite8 = new DevComponents.DotNetBar.DockSite();
             this.pnlSelectMenu.SuspendLayout();
             this.pnlSelectOptions.SuspendLayout();
             this.pnlLeftContent.SuspendLayout();
@@ -67,7 +73,7 @@
             // styleManager
             // 
             this.styleManager.ManagerStyle = DevComponents.DotNetBar.eStyle.Metro;
-            this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.Gray);
+            this.styleManager.MetroColorParameters = new DevComponents.DotNetBar.Metro.ColorTables.MetroColorGeneratorParameters(System.Drawing.Color.White, System.Drawing.Color.White);
             // 
             // sbStyle
             // 
@@ -77,8 +83,9 @@
             // 
             // 
             this.sbStyle.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
+            this.sbStyle.FocusCuesEnabled = false;
             this.sbStyle.ForeColor = System.Drawing.Color.Black;
-            this.sbStyle.Location = new System.Drawing.Point(654, 7);
+            this.sbStyle.Location = new System.Drawing.Point(658, 7);
             this.sbStyle.Name = "sbStyle";
             this.sbStyle.OffText = "灰";
             this.sbStyle.OnText = "白";
@@ -93,15 +100,13 @@
             this.pnlSelectMenu.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlSelectMenu.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlSelectMenu.Controls.Add(this.pnlSelectOptions);
-            this.pnlSelectMenu.Controls.Add(this.pnlSelectMenuBottom);
             this.pnlSelectMenu.Controls.Add(this.pnlSelectMenuTop);
             this.pnlSelectMenu.Dock = System.Windows.Forms.DockStyle.Left;
             this.pnlSelectMenu.Location = new System.Drawing.Point(0, 0);
             this.pnlSelectMenu.Name = "pnlSelectMenu";
-            this.pnlSelectMenu.Size = new System.Drawing.Size(200, 596);
+            this.pnlSelectMenu.Size = new System.Drawing.Size(200, 600);
             this.pnlSelectMenu.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlSelectMenu.Style.BackColor1.Color = System.Drawing.Color.Silver;
-            this.pnlSelectMenu.Style.BackColor2.Color = System.Drawing.Color.Gray;
+            this.pnlSelectMenu.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(75)))), ((int)(((byte)(95)))));
             this.pnlSelectMenu.Style.BorderColor.Color = System.Drawing.Color.DarkGray;
             this.pnlSelectMenu.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.None;
             this.pnlSelectMenu.Style.BorderWidth = 0;
@@ -113,7 +118,6 @@
             // 
             this.pnlSelectOptions.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlSelectOptions.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlSelectOptions.Controls.Add(this.labelX1);
             this.pnlSelectOptions.Controls.Add(this.lblOptionMain);
             this.pnlSelectOptions.Controls.Add(this.lblOptionThree);
             this.pnlSelectOptions.Controls.Add(this.lblOptionTwo);
@@ -136,12 +140,13 @@
             // 
             this.lblOptionMain.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblOptionMain.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOptionMain.ForeColor = System.Drawing.Color.Black;
+            this.lblOptionMain.ForeColor = System.Drawing.Color.White;
             this.lblOptionMain.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionMain.Image")));
             this.lblOptionMain.ImageTextSpacing = 15;
             this.lblOptionMain.Location = new System.Drawing.Point(-1, 27);
             this.lblOptionMain.Name = "lblOptionMain";
             this.lblOptionMain.Size = new System.Drawing.Size(205, 40);
+            this.lblOptionMain.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.lblOptionMain.TabIndex = 3;
             this.lblOptionMain.Tag = "main";
             this.lblOptionMain.Text = "欢迎使用媒体管理";
@@ -154,12 +159,13 @@
             // 
             this.lblOptionThree.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblOptionThree.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOptionThree.ForeColor = System.Drawing.Color.Black;
+            this.lblOptionThree.ForeColor = System.Drawing.Color.White;
             this.lblOptionThree.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionThree.Image")));
             this.lblOptionThree.ImageTextSpacing = 15;
             this.lblOptionThree.Location = new System.Drawing.Point(-1, 147);
             this.lblOptionThree.Name = "lblOptionThree";
             this.lblOptionThree.Size = new System.Drawing.Size(205, 40);
+            this.lblOptionThree.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.lblOptionThree.TabIndex = 2;
             this.lblOptionThree.Text = "面板3";
             // 
@@ -171,12 +177,13 @@
             // 
             this.lblOptionTwo.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblOptionTwo.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOptionTwo.ForeColor = System.Drawing.Color.Black;
+            this.lblOptionTwo.ForeColor = System.Drawing.Color.White;
             this.lblOptionTwo.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionTwo.Image")));
             this.lblOptionTwo.ImageTextSpacing = 15;
             this.lblOptionTwo.Location = new System.Drawing.Point(-1, 107);
             this.lblOptionTwo.Name = "lblOptionTwo";
             this.lblOptionTwo.Size = new System.Drawing.Size(205, 40);
+            this.lblOptionTwo.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.lblOptionTwo.TabIndex = 1;
             this.lblOptionTwo.Text = "面板2";
             // 
@@ -188,33 +195,15 @@
             // 
             this.lblOptionOne.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.lblOptionOne.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.lblOptionOne.ForeColor = System.Drawing.Color.Black;
+            this.lblOptionOne.ForeColor = System.Drawing.Color.White;
             this.lblOptionOne.Image = ((System.Drawing.Image)(resources.GetObject("lblOptionOne.Image")));
             this.lblOptionOne.ImageTextSpacing = 15;
             this.lblOptionOne.Location = new System.Drawing.Point(-1, 67);
             this.lblOptionOne.Name = "lblOptionOne";
             this.lblOptionOne.Size = new System.Drawing.Size(205, 40);
+            this.lblOptionOne.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.lblOptionOne.TabIndex = 0;
             this.lblOptionOne.Text = "面板1";
-            // 
-            // pnlSelectMenuBottom
-            // 
-            this.pnlSelectMenuBottom.CanvasColor = System.Drawing.SystemColors.Control;
-            this.pnlSelectMenuBottom.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlSelectMenuBottom.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.pnlSelectMenuBottom.Location = new System.Drawing.Point(0, 555);
-            this.pnlSelectMenuBottom.Name = "pnlSelectMenuBottom";
-            this.pnlSelectMenuBottom.Size = new System.Drawing.Size(200, 41);
-            this.pnlSelectMenuBottom.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlSelectMenuBottom.Style.BackColor1.Color = System.Drawing.Color.Gray;
-            this.pnlSelectMenuBottom.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnlSelectMenuBottom.Style.BorderColor.Alpha = ((byte)(0));
-            this.pnlSelectMenuBottom.Style.BorderColor.Color = System.Drawing.Color.White;
-            this.pnlSelectMenuBottom.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.Top;
-            this.pnlSelectMenuBottom.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
-            this.pnlSelectMenuBottom.Style.GradientAngle = 90;
-            this.pnlSelectMenuBottom.TabIndex = 1;
-            this.pnlSelectMenuBottom.Text = "panelEx1";
             // 
             // pnlSelectMenuTop
             // 
@@ -225,14 +214,13 @@
             this.pnlSelectMenuTop.Name = "pnlSelectMenuTop";
             this.pnlSelectMenuTop.Size = new System.Drawing.Size(200, 60);
             this.pnlSelectMenuTop.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlSelectMenuTop.Style.BackColor1.Color = System.Drawing.Color.Gray;
+            this.pnlSelectMenuTop.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(250)))));
             this.pnlSelectMenuTop.Style.BorderColor.Color = System.Drawing.Color.White;
             this.pnlSelectMenuTop.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.None;
             this.pnlSelectMenuTop.Style.BorderWidth = 0;
             this.pnlSelectMenuTop.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlSelectMenuTop.Style.GradientAngle = 90;
             this.pnlSelectMenuTop.TabIndex = 0;
-            this.pnlSelectMenuTop.Text = "panelEx1";
             this.pnlSelectMenuTop.DoubleClick += new System.EventHandler(this.pnlTitle_DoubleClick);
             this.pnlSelectMenuTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Frm_MouseDown);
             // 
@@ -242,13 +230,12 @@
             this.pnlLeftContent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlLeftContent.Controls.Add(this.pnlSelectMenu);
             this.pnlLeftContent.Dock = System.Windows.Forms.DockStyle.Left;
-            this.pnlLeftContent.Location = new System.Drawing.Point(2, 2);
+            this.pnlLeftContent.Location = new System.Drawing.Point(0, 0);
             this.pnlLeftContent.Name = "pnlLeftContent";
-            this.pnlLeftContent.Size = new System.Drawing.Size(200, 596);
+            this.pnlLeftContent.Size = new System.Drawing.Size(200, 600);
             this.pnlLeftContent.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlLeftContent.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlLeftContent.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
-            this.pnlLeftContent.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlLeftContent.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.None;
             this.pnlLeftContent.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlLeftContent.Style.GradientAngle = 90;
@@ -261,10 +248,10 @@
             this.pnlRightContent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlRightContent.Controls.Add(this.pnlCenterContent);
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRightContent.Location = new System.Drawing.Point(202, 62);
+            this.pnlRightContent.Location = new System.Drawing.Point(200, 60);
             this.pnlRightContent.Name = "pnlRightContent";
             this.pnlRightContent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 40);
-            this.pnlRightContent.Size = new System.Drawing.Size(820, 536);
+            this.pnlRightContent.Size = new System.Drawing.Size(824, 540);
             this.pnlRightContent.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlRightContent.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlRightContent.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
@@ -277,14 +264,13 @@
             // 
             this.pnlCenterContent.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlCenterContent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlCenterContent.Controls.Add(this.buttonX1);
             this.pnlCenterContent.Controls.Add(this.pnlOptionThree);
             this.pnlCenterContent.Controls.Add(this.pnlOptionTwo);
             this.pnlCenterContent.Controls.Add(this.pnlOptionOne);
             this.pnlCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCenterContent.Location = new System.Drawing.Point(0, 0);
             this.pnlCenterContent.Name = "pnlCenterContent";
-            this.pnlCenterContent.Size = new System.Drawing.Size(780, 496);
+            this.pnlCenterContent.Size = new System.Drawing.Size(784, 500);
             this.pnlCenterContent.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlCenterContent.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlCenterContent.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -299,12 +285,11 @@
             // 
             this.pnlOptionThree.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlOptionThree.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlOptionThree.Location = new System.Drawing.Point(53, 257);
+            this.pnlOptionThree.Location = new System.Drawing.Point(27, 232);
             this.pnlOptionThree.Name = "pnlOptionThree";
-            this.pnlOptionThree.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionThree.Size = new System.Drawing.Size(300, 200);
             this.pnlOptionThree.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlOptionThree.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.pnlOptionThree.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.pnlOptionThree.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlOptionThree.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlOptionThree.Style.GradientAngle = 90;
@@ -316,12 +301,11 @@
             // 
             this.pnlOptionTwo.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlOptionTwo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.pnlOptionTwo.Location = new System.Drawing.Point(53, 151);
+            this.pnlOptionTwo.Location = new System.Drawing.Point(333, 26);
             this.pnlOptionTwo.Name = "pnlOptionTwo";
-            this.pnlOptionTwo.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionTwo.Size = new System.Drawing.Size(300, 200);
             this.pnlOptionTwo.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlOptionTwo.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.pnlOptionTwo.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.pnlOptionTwo.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlOptionTwo.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlOptionTwo.Style.GradientAngle = 90;
@@ -334,12 +318,11 @@
             this.pnlOptionOne.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlOptionOne.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlOptionOne.Controls.Add(this.webBrowser);
-            this.pnlOptionOne.Location = new System.Drawing.Point(53, 45);
+            this.pnlOptionOne.Location = new System.Drawing.Point(27, 26);
             this.pnlOptionOne.Name = "pnlOptionOne";
-            this.pnlOptionOne.Size = new System.Drawing.Size(200, 100);
+            this.pnlOptionOne.Size = new System.Drawing.Size(300, 200);
             this.pnlOptionOne.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlOptionOne.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
-            this.pnlOptionOne.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.pnlOptionOne.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlOptionOne.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlOptionOne.Style.GradientAngle = 90;
@@ -352,7 +335,7 @@
             this.webBrowser.Location = new System.Drawing.Point(0, 0);
             this.webBrowser.MinimumSize = new System.Drawing.Size(20, 20);
             this.webBrowser.Name = "webBrowser";
-            this.webBrowser.Size = new System.Drawing.Size(200, 100);
+            this.webBrowser.Size = new System.Drawing.Size(300, 200);
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("http://chdbits.org/", System.UriKind.Absolute);
             // 
@@ -365,9 +348,9 @@
             this.pnlTitle.Controls.Add(this.btnMax);
             this.pnlTitle.Controls.Add(this.btnClose);
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
-            this.pnlTitle.Location = new System.Drawing.Point(202, 2);
+            this.pnlTitle.Location = new System.Drawing.Point(200, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(820, 60);
+            this.pnlTitle.Size = new System.Drawing.Size(824, 60);
             this.pnlTitle.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlTitle.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlTitle.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -385,8 +368,9 @@
             this.btnMin.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnMin.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMin.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnMin.FocusCuesEnabled = false;
             this.btnMin.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMin.Location = new System.Drawing.Point(728, 7);
+            this.btnMin.Location = new System.Drawing.Point(732, 7);
             this.btnMin.Name = "btnMin";
             this.btnMin.Size = new System.Drawing.Size(24, 23);
             this.btnMin.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -400,8 +384,9 @@
             this.btnMax.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnMax.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnMax.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnMax.FocusCuesEnabled = false;
             this.btnMax.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnMax.Location = new System.Drawing.Point(758, 7);
+            this.btnMax.Location = new System.Drawing.Point(762, 7);
             this.btnMax.Name = "btnMax";
             this.btnMax.Size = new System.Drawing.Size(24, 23);
             this.btnMax.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -415,8 +400,9 @@
             this.btnClose.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btnClose.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
             this.btnClose.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnClose.FocusCuesEnabled = false;
             this.btnClose.Font = new System.Drawing.Font("Verdana", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnClose.Location = new System.Drawing.Point(788, 7);
+            this.btnClose.Location = new System.Drawing.Point(792, 7);
             this.btnClose.Name = "btnClose";
             this.btnClose.Size = new System.Drawing.Size(24, 23);
             this.btnClose.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
@@ -436,61 +422,157 @@
             this.pnlMain.Location = new System.Drawing.Point(0, 0);
             this.pnlMain.Margin = new System.Windows.Forms.Padding(0);
             this.pnlMain.Name = "pnlMain";
-            this.pnlMain.Padding = new System.Windows.Forms.Padding(2);
             this.pnlMain.Size = new System.Drawing.Size(1024, 600);
             this.pnlMain.Style.Alignment = System.Drawing.StringAlignment.Center;
-            this.pnlMain.Style.BackColor1.Color = System.Drawing.Color.DarkGray;
             this.pnlMain.Style.BackColor2.Color = System.Drawing.Color.DarkGray;
-            this.pnlMain.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.pnlMain.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlMain.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlMain.Style.GradientAngle = 90;
             this.pnlMain.TabIndex = 13;
-            this.pnlMain.Text = "panelEx6";
-            this.pnlMain.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
-            this.pnlMain.MouseLeave += new System.EventHandler(this.panelEx6_MouseLeave);
-            this.pnlMain.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
-            this.pnlMain.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
             // 
-            // buttonX1
+            // dotNetBarManager
             // 
-            this.buttonX1.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.buttonX1.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.buttonX1.Location = new System.Drawing.Point(460, 333);
-            this.buttonX1.Name = "buttonX1";
-            this.buttonX1.Size = new System.Drawing.Size(75, 23);
-            this.buttonX1.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.buttonX1.TabIndex = 4;
-            this.buttonX1.Text = "buttonX1";
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.F1);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlC);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlA);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlV);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlX);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlZ);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlY);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.Del);
+            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.Ins);
+            this.dotNetBarManager.BottomDockSite = this.dockSite4;
+            this.dotNetBarManager.EnableFullSizeDock = false;
+            this.dotNetBarManager.LeftDockSite = this.dockSite1;
+            this.dotNetBarManager.ParentForm = this;
+            this.dotNetBarManager.RightDockSite = this.dockSite2;
+            this.dotNetBarManager.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.dotNetBarManager.ToolbarBottomDockSite = this.dockSite8;
+            this.dotNetBarManager.ToolbarLeftDockSite = this.dockSite5;
+            this.dotNetBarManager.ToolbarRightDockSite = this.dockSite6;
+            this.dotNetBarManager.ToolbarTopDockSite = this.dockSite7;
+            this.dotNetBarManager.TopDockSite = this.dockSite3;
+            this.dotNetBarManager.UseGlobalColorScheme = true;
             // 
-            // labelX1
+            // dockSite1
             // 
-            this.labelX1.BackColor = System.Drawing.Color.Transparent;
+            this.dockSite1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite1.BackColor = System.Drawing.Color.White;
+            this.dockSite1.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dockSite1.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
+            this.dockSite1.ForeColor = System.Drawing.Color.Black;
+            this.dockSite1.Location = new System.Drawing.Point(0, 0);
+            this.dockSite1.Name = "dockSite1";
+            this.dockSite1.Size = new System.Drawing.Size(0, 600);
+            this.dockSite1.TabIndex = 14;
+            this.dockSite1.TabStop = false;
             // 
+            // dockSite2
             // 
+            this.dockSite2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite2.BackColor = System.Drawing.Color.White;
+            this.dockSite2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dockSite2.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
+            this.dockSite2.ForeColor = System.Drawing.Color.Black;
+            this.dockSite2.Location = new System.Drawing.Point(1024, 0);
+            this.dockSite2.Name = "dockSite2";
+            this.dockSite2.Size = new System.Drawing.Size(0, 600);
+            this.dockSite2.TabIndex = 15;
+            this.dockSite2.TabStop = false;
             // 
-            this.labelX1.BackgroundStyle.CornerType = DevComponents.DotNetBar.eCornerType.Square;
-            this.labelX1.Font = new System.Drawing.Font("微软雅黑", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
-            this.labelX1.ForeColor = System.Drawing.Color.Black;
-            this.labelX1.Image = ((System.Drawing.Image)(resources.GetObject("labelX1.Image")));
-            this.labelX1.ImageTextSpacing = 15;
-            this.labelX1.Location = new System.Drawing.Point(-1, 224);
-            this.labelX1.Name = "labelX1";
-            this.labelX1.Size = new System.Drawing.Size(205, 40);
-            this.labelX1.TabIndex = 4;
-            this.labelX1.Text = "面板4";
+            // dockSite3
+            // 
+            this.dockSite3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite3.BackColor = System.Drawing.Color.White;
+            this.dockSite3.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dockSite3.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
+            this.dockSite3.ForeColor = System.Drawing.Color.Black;
+            this.dockSite3.Location = new System.Drawing.Point(0, 0);
+            this.dockSite3.Name = "dockSite3";
+            this.dockSite3.Size = new System.Drawing.Size(1024, 0);
+            this.dockSite3.TabIndex = 16;
+            this.dockSite3.TabStop = false;
+            // 
+            // dockSite4
+            // 
+            this.dockSite4.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite4.BackColor = System.Drawing.Color.White;
+            this.dockSite4.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dockSite4.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
+            this.dockSite4.ForeColor = System.Drawing.Color.Black;
+            this.dockSite4.Location = new System.Drawing.Point(0, 600);
+            this.dockSite4.Name = "dockSite4";
+            this.dockSite4.Size = new System.Drawing.Size(1024, 0);
+            this.dockSite4.TabIndex = 17;
+            this.dockSite4.TabStop = false;
+            // 
+            // dockSite5
+            // 
+            this.dockSite5.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite5.BackColor = System.Drawing.Color.White;
+            this.dockSite5.Dock = System.Windows.Forms.DockStyle.Left;
+            this.dockSite5.ForeColor = System.Drawing.Color.Black;
+            this.dockSite5.Location = new System.Drawing.Point(0, 0);
+            this.dockSite5.Name = "dockSite5";
+            this.dockSite5.Size = new System.Drawing.Size(0, 600);
+            this.dockSite5.TabIndex = 18;
+            this.dockSite5.TabStop = false;
+            // 
+            // dockSite6
+            // 
+            this.dockSite6.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite6.BackColor = System.Drawing.Color.White;
+            this.dockSite6.Dock = System.Windows.Forms.DockStyle.Right;
+            this.dockSite6.ForeColor = System.Drawing.Color.Black;
+            this.dockSite6.Location = new System.Drawing.Point(1024, 0);
+            this.dockSite6.Name = "dockSite6";
+            this.dockSite6.Size = new System.Drawing.Size(0, 600);
+            this.dockSite6.TabIndex = 19;
+            this.dockSite6.TabStop = false;
+            // 
+            // dockSite7
+            // 
+            this.dockSite7.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite7.BackColor = System.Drawing.Color.White;
+            this.dockSite7.Dock = System.Windows.Forms.DockStyle.Top;
+            this.dockSite7.ForeColor = System.Drawing.Color.Black;
+            this.dockSite7.Location = new System.Drawing.Point(0, 0);
+            this.dockSite7.Name = "dockSite7";
+            this.dockSite7.Size = new System.Drawing.Size(1024, 0);
+            this.dockSite7.TabIndex = 20;
+            this.dockSite7.TabStop = false;
+            // 
+            // dockSite8
+            // 
+            this.dockSite8.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
+            this.dockSite8.BackColor = System.Drawing.Color.White;
+            this.dockSite8.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.dockSite8.ForeColor = System.Drawing.Color.Black;
+            this.dockSite8.Location = new System.Drawing.Point(0, 600);
+            this.dockSite8.Name = "dockSite8";
+            this.dockSite8.Size = new System.Drawing.Size(1024, 0);
+            this.dockSite8.TabIndex = 21;
+            this.dockSite8.TabStop = false;
             // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 600);
+            this.Controls.Add(this.dockSite2);
+            this.Controls.Add(this.dockSite1);
             this.Controls.Add(this.pnlMain);
+            this.Controls.Add(this.dockSite3);
+            this.Controls.Add(this.dockSite4);
+            this.Controls.Add(this.dockSite5);
+            this.Controls.Add(this.dockSite6);
+            this.Controls.Add(this.dockSite7);
+            this.Controls.Add(this.dockSite8);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
+            this.MinimumSize = new System.Drawing.Size(1024, 600);
             this.Name = "frmMain";
-            this.Text = "Form1";
-            this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            this.StartPosition = System.Windows.Forms.FormStartPosition.Manual;
             this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.frmMain_FormClosing);
             this.Load += new System.EventHandler(this.Main_Load);
             this.pnlSelectMenu.ResumeLayout(false);
@@ -520,7 +602,6 @@
         private DevComponents.DotNetBar.ButtonX btnMin;
         private DevComponents.DotNetBar.PanelEx pnlMain;
         private DevComponents.DotNetBar.PanelEx pnlSelectMenuTop;
-        private DevComponents.DotNetBar.PanelEx pnlSelectMenuBottom;
         private DevComponents.DotNetBar.PanelEx pnlSelectOptions;
         private DevComponents.DotNetBar.LabelX lblOptionOne;
         private DevComponents.DotNetBar.LabelX lblOptionThree;
@@ -529,8 +610,15 @@
         private DevComponents.DotNetBar.PanelEx pnlOptionTwo;
         private DevComponents.DotNetBar.PanelEx pnlOptionOne;
         private DevComponents.DotNetBar.LabelX lblOptionMain;
-        private DevComponents.DotNetBar.ButtonX buttonX1;
-        private DevComponents.DotNetBar.LabelX labelX1;
+        private DevComponents.DotNetBar.DotNetBarManager dotNetBarManager;
+        private DevComponents.DotNetBar.DockSite dockSite4;
+        private DevComponents.DotNetBar.DockSite dockSite1;
+        private DevComponents.DotNetBar.DockSite dockSite2;
+        private DevComponents.DotNetBar.DockSite dockSite3;
+        private DevComponents.DotNetBar.DockSite dockSite5;
+        private DevComponents.DotNetBar.DockSite dockSite6;
+        private DevComponents.DotNetBar.DockSite dockSite7;
+        private DevComponents.DotNetBar.DockSite dockSite8;
     }
 }
 

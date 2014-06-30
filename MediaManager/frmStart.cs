@@ -38,7 +38,7 @@ namespace MediaManager
 
             circularProgress.Value++;
 
-            if (IntTime == 5)
+            if (IntTime == 1)
             {
                 this.Close();
             }

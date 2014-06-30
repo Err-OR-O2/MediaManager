@@ -27,11 +27,33 @@ namespace MediaManager
         /// </summary>
         private void LoadTransaction()
         {
+            //挂载调整窗体事件.
+            //this.pnlSelectMenuTop.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
+            //this.pnlSelectMenuTop.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
+            //this.pnlSelectMenuTop.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
+            //this.pnlSelectMenuTop.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
+            //
+            this.pnlSelectMenu.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
+            this.pnlSelectMenu.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
+            this.pnlSelectMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
+            this.pnlSelectMenu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
+            //
+            //this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
+            //this.pnlTitle.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
+            //this.pnlTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
+            //this.pnlTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
+            //
+            this.pnlRightContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
+            this.pnlRightContent.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
+            this.pnlRightContent.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
+            this.pnlRightContent.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
             //是否已有主选项.
             bool isHadMain = false;
-            //挂载事件,关联菜单面板关系.
+            //挂载面板事件,关联菜单面板关系.
             foreach (LabelX lbl in pnlSelectOptions.Controls)
             {
+                //选项字体颜色.
+                lbl.ForeColor = colUnCheckFore;
                 //鼠标进入事件.
                 lbl.MouseEnter += new EventHandler(lblOption_MouseEnter);
                 //鼠标离开事件.
@@ -53,6 +75,12 @@ namespace MediaManager
 
                         //设置主选项默认选中状态.
                         lbl.BackColor = colChecked;
+
+                        //设置主选项样式.
+                        lbl.ForeColor = colCheckedFore;
+                        lbl.BackgroundStyle.BorderLeft = eStyleBorderType.Solid;
+                        lbl.BackgroundStyle.BorderLeftWidth = 4;
+                        lbl.BackgroundStyle.BorderLeftColor = pnlSelectMenuTop.Style.BackColor1.Color;
 
                         isHadMain = true;
                     }
@@ -376,7 +404,7 @@ namespace MediaManager
         /// </summary>
         /// <param name="sender"></param>
         /// <param name="e"></param>
-        private void panelEx6_MouseLeave(object sender, EventArgs e)
+        private void FrmStyle_MouseLeave(object sender, EventArgs e)
         {
             this.Cursor = System.Windows.Forms.Cursors.Default;
         }
@@ -417,13 +445,21 @@ namespace MediaManager
         /// </summary>
         private int intWidthSub;
         /// <summary>
+        /// 选项选中字体颜色.
+        /// </summary>
+        private Color colCheckedFore = Color.White;
+        /// <summary>
+        /// 选项未选中字体颜色.
+        /// </summary>
+        private Color colUnCheckFore = Color.FromArgb(255, 165, 176, 196);
+        /// <summary>
         /// 选项进入背景色.
         /// </summary>
-        private Color colMoveIn = Color.LightGray;
+        private Color colMoveIn = Color.FromArgb(255, 79, 95, 121);
         /// <summary>
         /// 选项选中背景色.
         /// </summary>
-        private Color colChecked = Color.DimGray;
+        private Color colChecked = Color.FromArgb(255, 79, 95, 121);
         /// <summary>
         /// 选项未选中背景色.
         /// </summary>
@@ -514,6 +550,8 @@ namespace MediaManager
                     lbl.Tag = optionState.UNCHECK;
                 }
                 lbl.BackColor = colUnCheck;
+                lbl.ForeColor = colUnCheckFore;
+                lbl.BackgroundStyle.BorderLeft = eStyleBorderType.None;
             }
 
             //选中当前选项.
@@ -522,6 +560,10 @@ namespace MediaManager
             else
                 ((LabelX)sender).Tag = optionState.CHECKED;
             ((LabelX)sender).BackColor = colChecked;
+            ((LabelX)sender).ForeColor = colCheckedFore;
+            ((LabelX)sender).BackgroundStyle.BorderLeft = eStyleBorderType.Solid;
+            ((LabelX)sender).BackgroundStyle.BorderLeftWidth = 4;
+            ((LabelX)sender).BackgroundStyle.BorderLeftColor = pnlSelectMenuTop.Style.BackColor1.Color;
 
             #region 面板动画初始化
             //判断是否存在面板对象.
@@ -692,8 +734,12 @@ namespace MediaManager
         /// <param name="e"></param>
         private void Main_Load(object sender, EventArgs e)
         {
+            //启动事件初始化.
             LoadTransaction();
+            //默认风格设置.
             sbStyle.Value = false;
+            //默认位置大小设置.
+            SetWindowsInitLocalSize();
         }
         /// <summary>
         /// 开关事件(主题测试).
@@ -772,7 +818,7 @@ namespace MediaManager
         /// <summary>
         /// 窗体最大化最小化.
         /// </summary>
-        public void SetWindowsMax()
+        private void SetWindowsMax()
         {
             if (this.WindowState != System.Windows.Forms.FormWindowState.Maximized)
             {
@@ -781,6 +827,35 @@ namespace MediaManager
             else
             {
                 this.WindowState = System.Windows.Forms.FormWindowState.Normal;
+            }
+        }
+        /// <summary>
+        /// 设置窗体的初始化位置和大小.
+        /// </summary>
+        private void SetWindowsInitLocalSize()
+        {
+            //窗体系数.
+            int intFormNum = Convert.ToInt32(
+                (new decimal(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width)
+                /
+                new decimal(System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height) * 20));
+
+            //窗体位置.
+            this.Left = intFormNum;
+            this.Top = intFormNum;
+
+            //窗体大小.
+            if (this.MinimumSize.Height + intFormNum >= System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height
+                ||
+                this.MinimumSize.Width + intFormNum >= System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width)
+            {
+                this.WindowState = System.Windows.Forms.FormWindowState.Maximized;
+            }
+            else
+            {
+                this.Size = new Size(
+                    System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Width - intFormNum * 2,
+                    System.Windows.Forms.Screen.PrimaryScreen.WorkingArea.Height - intFormNum * 2);
             }
         }
         #endregion
