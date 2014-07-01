@@ -25,6 +25,8 @@ namespace MediaManager
 
         private void frmStart_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.TopMost = false;
             timer.Start();
         }
 

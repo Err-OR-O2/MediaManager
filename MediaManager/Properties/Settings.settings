@@ -1,7 +1,15 @@
 ﻿<?xml version='1.0' encoding='utf-8'?>
-<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)">
-  <Profiles>
-    <Profile Name="(Default)" />
-  </Profiles>
-  <Settings />
+<SettingsFile xmlns="http://schemas.microsoft.com/VisualStudio/2004/01/settings" CurrentProfile="(Default)" GeneratedClassNamespace="MediaManager.Properties" GeneratedClassName="Settings">
+  <Profiles />
+  <Settings>
+    <Setting Name="UTorrentUserName" Type="System.String" Scope="User">
+      <Value Profile="(Default)">root</Value>
+    </Setting>
+    <Setting Name="UTorrentPassWord" Type="System.String" Scope="User">
+      <Value Profile="(Default)">ero81442963</Value>
+    </Setting>
+    <Setting Name="UTorrentConnectUrl" Type="System.String" Scope="User">
+      <Value Profile="(Default)">http://192.168.0.1:11111/gui/</Value>
+    </Setting>
+  </Settings>
 </SettingsFile>

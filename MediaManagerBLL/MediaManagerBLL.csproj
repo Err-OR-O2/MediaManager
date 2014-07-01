@@ -30,6 +30,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json">
+      <HintPath>..\MediaManager\DLL\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -39,8 +42,18 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="WebRequest.cs" />
+    <Compile Include="UTorrentWebRequest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\MediaManagerENT\MediaManagerENT.csproj">
+      <Project>{6c1e3bb9-8016-460a-a12e-fd047fec9f1c}</Project>
+      <Name>MediaManagerENT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MediaManagerPUL\MediaManagerPUL.csproj">
+      <Project>{a6c70005-215f-4ca6-963a-306cfe6ded79}</Project>
+      <Name>MediaManagerPUL</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

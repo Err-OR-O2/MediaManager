@@ -79,7 +79,7 @@
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
     <None Include="Properties\Settings.settings">
-      <Generator>SettingsSingleFileGenerator</Generator>
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
       <LastGenOutput>Settings.Designer.cs</LastGenOutput>
     </None>
     <Compile Include="Properties\Settings.Designer.cs">
@@ -94,9 +94,24 @@
   <ItemGroup>
     <Content Include="DLL\DevComponents.DotNetBar2.dll" />
     <Content Include="DLL\DevComponents.DotNetBar2.xml" />
+    <Content Include="DLL\Newtonsoft.Json.dll" />
+    <Content Include="DLL\Newtonsoft.Json.xml" />
     <Content Include="STYLE\manage_phone.ico" />
   </ItemGroup>
-  <ItemGroup />
+  <ItemGroup>
+    <ProjectReference Include="..\MediaManagerBLL\MediaManagerBLL.csproj">
+      <Project>{5939dd40-798c-4f3a-ad23-9c300c46c82f}</Project>
+      <Name>MediaManagerBLL</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MediaManagerENT\MediaManagerENT.csproj">
+      <Project>{6c1e3bb9-8016-460a-a12e-fd047fec9f1c}</Project>
+      <Name>MediaManagerENT</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\MediaManagerPUL\MediaManagerPUL.csproj">
+      <Project>{a6c70005-215f-4ca6-963a-306cfe6ded79}</Project>
+      <Name>MediaManagerPUL</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

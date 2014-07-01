@@ -30,6 +30,7 @@
         {
             this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(frmMain));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             this.styleManager = new DevComponents.DotNetBar.StyleManager(this.components);
             this.sbStyle = new DevComponents.DotNetBar.Controls.SwitchButton();
             this.pnlSelectMenu = new DevComponents.DotNetBar.PanelEx();
@@ -44,27 +45,22 @@
             this.pnlCenterContent = new DevComponents.DotNetBar.PanelEx();
             this.pnlOptionThree = new DevComponents.DotNetBar.PanelEx();
             this.pnlOptionTwo = new DevComponents.DotNetBar.PanelEx();
+            this.dataGridViewX1 = new DevComponents.DotNetBar.Controls.DataGridViewX();
             this.pnlOptionOne = new DevComponents.DotNetBar.PanelEx();
             this.webBrowser = new System.Windows.Forms.WebBrowser();
+            this.btnTEST = new DevComponents.DotNetBar.ButtonX();
             this.pnlTitle = new DevComponents.DotNetBar.PanelEx();
             this.btnMin = new DevComponents.DotNetBar.ButtonX();
             this.btnMax = new DevComponents.DotNetBar.ButtonX();
             this.btnClose = new DevComponents.DotNetBar.ButtonX();
             this.pnlMain = new DevComponents.DotNetBar.PanelEx();
-            this.dotNetBarManager = new DevComponents.DotNetBar.DotNetBarManager(this.components);
-            this.dockSite1 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite2 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite3 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite4 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite5 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite6 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite7 = new DevComponents.DotNetBar.DockSite();
-            this.dockSite8 = new DevComponents.DotNetBar.DockSite();
             this.pnlSelectMenu.SuspendLayout();
             this.pnlSelectOptions.SuspendLayout();
             this.pnlLeftContent.SuspendLayout();
             this.pnlRightContent.SuspendLayout();
             this.pnlCenterContent.SuspendLayout();
+            this.pnlOptionTwo.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).BeginInit();
             this.pnlOptionOne.SuspendLayout();
             this.pnlTitle.SuspendLayout();
             this.pnlMain.SuspendLayout();
@@ -122,9 +118,10 @@
             this.pnlSelectOptions.Controls.Add(this.lblOptionThree);
             this.pnlSelectOptions.Controls.Add(this.lblOptionTwo);
             this.pnlSelectOptions.Controls.Add(this.lblOptionOne);
-            this.pnlSelectOptions.Location = new System.Drawing.Point(-1, 93);
+            this.pnlSelectOptions.Dock = System.Windows.Forms.DockStyle.Top;
+            this.pnlSelectOptions.Location = new System.Drawing.Point(0, 80);
             this.pnlSelectOptions.Name = "pnlSelectOptions";
-            this.pnlSelectOptions.Size = new System.Drawing.Size(202, 373);
+            this.pnlSelectOptions.Size = new System.Drawing.Size(200, 198);
             this.pnlSelectOptions.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlSelectOptions.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
             this.pnlSelectOptions.Style.BorderWidth = 0;
@@ -212,7 +209,7 @@
             this.pnlSelectMenuTop.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlSelectMenuTop.Location = new System.Drawing.Point(0, 0);
             this.pnlSelectMenuTop.Name = "pnlSelectMenuTop";
-            this.pnlSelectMenuTop.Size = new System.Drawing.Size(200, 60);
+            this.pnlSelectMenuTop.Size = new System.Drawing.Size(200, 80);
             this.pnlSelectMenuTop.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlSelectMenuTop.Style.BackColor1.Color = System.Drawing.Color.FromArgb(((int)(((byte)(22)))), ((int)(((byte)(164)))), ((int)(((byte)(250)))));
             this.pnlSelectMenuTop.Style.BorderColor.Color = System.Drawing.Color.White;
@@ -248,10 +245,10 @@
             this.pnlRightContent.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
             this.pnlRightContent.Controls.Add(this.pnlCenterContent);
             this.pnlRightContent.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.pnlRightContent.Location = new System.Drawing.Point(200, 60);
+            this.pnlRightContent.Location = new System.Drawing.Point(200, 81);
             this.pnlRightContent.Name = "pnlRightContent";
             this.pnlRightContent.Padding = new System.Windows.Forms.Padding(0, 0, 40, 40);
-            this.pnlRightContent.Size = new System.Drawing.Size(824, 540);
+            this.pnlRightContent.Size = new System.Drawing.Size(824, 519);
             this.pnlRightContent.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlRightContent.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlRightContent.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
@@ -270,7 +267,7 @@
             this.pnlCenterContent.Dock = System.Windows.Forms.DockStyle.Fill;
             this.pnlCenterContent.Location = new System.Drawing.Point(0, 0);
             this.pnlCenterContent.Name = "pnlCenterContent";
-            this.pnlCenterContent.Size = new System.Drawing.Size(784, 500);
+            this.pnlCenterContent.Size = new System.Drawing.Size(784, 479);
             this.pnlCenterContent.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlCenterContent.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlCenterContent.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
@@ -301,6 +298,7 @@
             // 
             this.pnlOptionTwo.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlOptionTwo.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlOptionTwo.Controls.Add(this.dataGridViewX1);
             this.pnlOptionTwo.Location = new System.Drawing.Point(333, 26);
             this.pnlOptionTwo.Name = "pnlOptionTwo";
             this.pnlOptionTwo.Size = new System.Drawing.Size(300, 200);
@@ -312,6 +310,30 @@
             this.pnlOptionTwo.TabIndex = 2;
             this.pnlOptionTwo.Tag = "lblOptionTwo";
             this.pnlOptionTwo.Text = "pnlOptionTwo";
+            // 
+            // dataGridViewX1
+            // 
+            this.dataGridViewX1.AllowUserToAddRows = false;
+            this.dataGridViewX1.AllowUserToDeleteRows = false;
+            this.dataGridViewX1.BackgroundColor = System.Drawing.Color.White;
+            this.dataGridViewX1.BorderStyle = System.Windows.Forms.BorderStyle.None;
+            this.dataGridViewX1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("宋体", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(134)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridViewX1.DefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridViewX1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridViewX1.GridColor = System.Drawing.Color.FromArgb(((int)(((byte)(170)))), ((int)(((byte)(170)))), ((int)(((byte)(170)))));
+            this.dataGridViewX1.Location = new System.Drawing.Point(0, 0);
+            this.dataGridViewX1.Name = "dataGridViewX1";
+            this.dataGridViewX1.ReadOnly = true;
+            this.dataGridViewX1.RowTemplate.Height = 23;
+            this.dataGridViewX1.Size = new System.Drawing.Size(300, 200);
+            this.dataGridViewX1.TabIndex = 0;
             // 
             // pnlOptionOne
             // 
@@ -339,10 +361,23 @@
             this.webBrowser.TabIndex = 0;
             this.webBrowser.Url = new System.Uri("http://chdbits.org/", System.UriKind.Absolute);
             // 
+            // btnTEST
+            // 
+            this.btnTEST.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
+            this.btnTEST.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
+            this.btnTEST.Location = new System.Drawing.Point(484, 29);
+            this.btnTEST.Name = "btnTEST";
+            this.btnTEST.Size = new System.Drawing.Size(75, 23);
+            this.btnTEST.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.btnTEST.TabIndex = 0;
+            this.btnTEST.Text = "buttonX1";
+            this.btnTEST.Click += new System.EventHandler(this.btnTEST_Click);
+            // 
             // pnlTitle
             // 
             this.pnlTitle.CanvasColor = System.Drawing.SystemColors.Control;
             this.pnlTitle.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
+            this.pnlTitle.Controls.Add(this.btnTEST);
             this.pnlTitle.Controls.Add(this.sbStyle);
             this.pnlTitle.Controls.Add(this.btnMin);
             this.pnlTitle.Controls.Add(this.btnMax);
@@ -350,16 +385,15 @@
             this.pnlTitle.Dock = System.Windows.Forms.DockStyle.Top;
             this.pnlTitle.Location = new System.Drawing.Point(200, 0);
             this.pnlTitle.Name = "pnlTitle";
-            this.pnlTitle.Size = new System.Drawing.Size(824, 60);
+            this.pnlTitle.Size = new System.Drawing.Size(824, 81);
             this.pnlTitle.Style.Alignment = System.Drawing.StringAlignment.Center;
             this.pnlTitle.Style.BackColor1.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBackground;
             this.pnlTitle.Style.Border = DevComponents.DotNetBar.eBorderType.SingleLine;
             this.pnlTitle.Style.BorderColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelBorder;
-            this.pnlTitle.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.None;
+            this.pnlTitle.Style.BorderSide = DevComponents.DotNetBar.eBorderSide.Bottom;
             this.pnlTitle.Style.ForeColor.ColorSchemePart = DevComponents.DotNetBar.eColorSchemePart.PanelText;
             this.pnlTitle.Style.GradientAngle = 90;
             this.pnlTitle.TabIndex = 12;
-            this.pnlTitle.Text = "panelEx5";
             this.pnlTitle.DoubleClick += new System.EventHandler(this.pnlTitle_DoubleClick);
             this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.Frm_MouseDown);
             // 
@@ -430,144 +464,12 @@
             this.pnlMain.Style.GradientAngle = 90;
             this.pnlMain.TabIndex = 13;
             // 
-            // dotNetBarManager
-            // 
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.F1);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlC);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlA);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlV);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlX);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlZ);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.CtrlY);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.Del);
-            this.dotNetBarManager.AutoDispatchShortcuts.Add(DevComponents.DotNetBar.eShortcut.Ins);
-            this.dotNetBarManager.BottomDockSite = this.dockSite4;
-            this.dotNetBarManager.EnableFullSizeDock = false;
-            this.dotNetBarManager.LeftDockSite = this.dockSite1;
-            this.dotNetBarManager.ParentForm = this;
-            this.dotNetBarManager.RightDockSite = this.dockSite2;
-            this.dotNetBarManager.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.dotNetBarManager.ToolbarBottomDockSite = this.dockSite8;
-            this.dotNetBarManager.ToolbarLeftDockSite = this.dockSite5;
-            this.dotNetBarManager.ToolbarRightDockSite = this.dockSite6;
-            this.dotNetBarManager.ToolbarTopDockSite = this.dockSite7;
-            this.dotNetBarManager.TopDockSite = this.dockSite3;
-            this.dotNetBarManager.UseGlobalColorScheme = true;
-            // 
-            // dockSite1
-            // 
-            this.dockSite1.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite1.BackColor = System.Drawing.Color.White;
-            this.dockSite1.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dockSite1.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite1.ForeColor = System.Drawing.Color.Black;
-            this.dockSite1.Location = new System.Drawing.Point(0, 0);
-            this.dockSite1.Name = "dockSite1";
-            this.dockSite1.Size = new System.Drawing.Size(0, 600);
-            this.dockSite1.TabIndex = 14;
-            this.dockSite1.TabStop = false;
-            // 
-            // dockSite2
-            // 
-            this.dockSite2.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite2.BackColor = System.Drawing.Color.White;
-            this.dockSite2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dockSite2.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite2.ForeColor = System.Drawing.Color.Black;
-            this.dockSite2.Location = new System.Drawing.Point(1024, 0);
-            this.dockSite2.Name = "dockSite2";
-            this.dockSite2.Size = new System.Drawing.Size(0, 600);
-            this.dockSite2.TabIndex = 15;
-            this.dockSite2.TabStop = false;
-            // 
-            // dockSite3
-            // 
-            this.dockSite3.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite3.BackColor = System.Drawing.Color.White;
-            this.dockSite3.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dockSite3.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite3.ForeColor = System.Drawing.Color.Black;
-            this.dockSite3.Location = new System.Drawing.Point(0, 0);
-            this.dockSite3.Name = "dockSite3";
-            this.dockSite3.Size = new System.Drawing.Size(1024, 0);
-            this.dockSite3.TabIndex = 16;
-            this.dockSite3.TabStop = false;
-            // 
-            // dockSite4
-            // 
-            this.dockSite4.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite4.BackColor = System.Drawing.Color.White;
-            this.dockSite4.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dockSite4.DocumentDockContainer = new DevComponents.DotNetBar.DocumentDockContainer();
-            this.dockSite4.ForeColor = System.Drawing.Color.Black;
-            this.dockSite4.Location = new System.Drawing.Point(0, 600);
-            this.dockSite4.Name = "dockSite4";
-            this.dockSite4.Size = new System.Drawing.Size(1024, 0);
-            this.dockSite4.TabIndex = 17;
-            this.dockSite4.TabStop = false;
-            // 
-            // dockSite5
-            // 
-            this.dockSite5.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite5.BackColor = System.Drawing.Color.White;
-            this.dockSite5.Dock = System.Windows.Forms.DockStyle.Left;
-            this.dockSite5.ForeColor = System.Drawing.Color.Black;
-            this.dockSite5.Location = new System.Drawing.Point(0, 0);
-            this.dockSite5.Name = "dockSite5";
-            this.dockSite5.Size = new System.Drawing.Size(0, 600);
-            this.dockSite5.TabIndex = 18;
-            this.dockSite5.TabStop = false;
-            // 
-            // dockSite6
-            // 
-            this.dockSite6.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite6.BackColor = System.Drawing.Color.White;
-            this.dockSite6.Dock = System.Windows.Forms.DockStyle.Right;
-            this.dockSite6.ForeColor = System.Drawing.Color.Black;
-            this.dockSite6.Location = new System.Drawing.Point(1024, 0);
-            this.dockSite6.Name = "dockSite6";
-            this.dockSite6.Size = new System.Drawing.Size(0, 600);
-            this.dockSite6.TabIndex = 19;
-            this.dockSite6.TabStop = false;
-            // 
-            // dockSite7
-            // 
-            this.dockSite7.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite7.BackColor = System.Drawing.Color.White;
-            this.dockSite7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.dockSite7.ForeColor = System.Drawing.Color.Black;
-            this.dockSite7.Location = new System.Drawing.Point(0, 0);
-            this.dockSite7.Name = "dockSite7";
-            this.dockSite7.Size = new System.Drawing.Size(1024, 0);
-            this.dockSite7.TabIndex = 20;
-            this.dockSite7.TabStop = false;
-            // 
-            // dockSite8
-            // 
-            this.dockSite8.AccessibleRole = System.Windows.Forms.AccessibleRole.Window;
-            this.dockSite8.BackColor = System.Drawing.Color.White;
-            this.dockSite8.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.dockSite8.ForeColor = System.Drawing.Color.Black;
-            this.dockSite8.Location = new System.Drawing.Point(0, 600);
-            this.dockSite8.Name = "dockSite8";
-            this.dockSite8.Size = new System.Drawing.Size(1024, 0);
-            this.dockSite8.TabIndex = 21;
-            this.dockSite8.TabStop = false;
-            // 
             // frmMain
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 12F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1024, 600);
-            this.Controls.Add(this.dockSite2);
-            this.Controls.Add(this.dockSite1);
             this.Controls.Add(this.pnlMain);
-            this.Controls.Add(this.dockSite3);
-            this.Controls.Add(this.dockSite4);
-            this.Controls.Add(this.dockSite5);
-            this.Controls.Add(this.dockSite6);
-            this.Controls.Add(this.dockSite7);
-            this.Controls.Add(this.dockSite8);
             this.DoubleBuffered = true;
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.None;
             this.MinimumSize = new System.Drawing.Size(1024, 600);
@@ -580,6 +482,8 @@
             this.pnlLeftContent.ResumeLayout(false);
             this.pnlRightContent.ResumeLayout(false);
             this.pnlCenterContent.ResumeLayout(false);
+            this.pnlOptionTwo.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridViewX1)).EndInit();
             this.pnlOptionOne.ResumeLayout(false);
             this.pnlTitle.ResumeLayout(false);
             this.pnlMain.ResumeLayout(false);
@@ -610,15 +514,8 @@
         private DevComponents.DotNetBar.PanelEx pnlOptionTwo;
         private DevComponents.DotNetBar.PanelEx pnlOptionOne;
         private DevComponents.DotNetBar.LabelX lblOptionMain;
-        private DevComponents.DotNetBar.DotNetBarManager dotNetBarManager;
-        private DevComponents.DotNetBar.DockSite dockSite4;
-        private DevComponents.DotNetBar.DockSite dockSite1;
-        private DevComponents.DotNetBar.DockSite dockSite2;
-        private DevComponents.DotNetBar.DockSite dockSite3;
-        private DevComponents.DotNetBar.DockSite dockSite5;
-        private DevComponents.DotNetBar.DockSite dockSite6;
-        private DevComponents.DotNetBar.DockSite dockSite7;
-        private DevComponents.DotNetBar.DockSite dockSite8;
+        private DevComponents.DotNetBar.ButtonX btnTEST;
+        private DevComponents.DotNetBar.Controls.DataGridViewX dataGridViewX1;
     }
 }
 

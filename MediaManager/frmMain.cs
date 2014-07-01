@@ -5,12 +5,16 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Threading;
 using System.Threading.Tasks;
 using System.Runtime.InteropServices;
 
 using DevComponents.DotNetBar;
 using DevComponents.DotNetBar.Metro;
 using DevComponents.DotNetBar.Metro.ColorTables;
+
+using MediaManagerBLL;
+using MediaManagerENT.uTorrent;
 
 namespace MediaManager
 {
@@ -38,10 +42,10 @@ namespace MediaManager
             this.pnlSelectMenu.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
             this.pnlSelectMenu.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
             //
-            //this.pnlTitle.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
-            //this.pnlTitle.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
-            //this.pnlTitle.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
-            //this.pnlTitle.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
+            this.pnlSelectOptions.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
+            this.pnlSelectOptions.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
+            this.pnlSelectOptions.MouseMove += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseMove);
+            this.pnlSelectOptions.MouseUp += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseUp);
             //
             this.pnlRightContent.MouseDown += new System.Windows.Forms.MouseEventHandler(this.FrmStyle_MouseDown);
             this.pnlRightContent.MouseLeave += new System.EventHandler(this.FrmStyle_MouseLeave);
@@ -734,6 +738,8 @@ namespace MediaManager
         /// <param name="e"></param>
         private void Main_Load(object sender, EventArgs e)
         {
+            this.TopMost = true;
+            this.TopMost = false;
             //启动事件初始化.
             LoadTransaction();
             //默认风格设置.
@@ -859,6 +865,14 @@ namespace MediaManager
             }
         }
         #endregion
+
+
+        private void btnTEST_Click(object sender, EventArgs e)
+        {
+            UTorrentWebRequest test = new UTorrentWebRequest();
+
+            Torrents torrents = test.GetTorrents();
+        }
 
     }
 }
